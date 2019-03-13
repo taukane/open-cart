@@ -1,9 +1,22 @@
 {% if categories %}
+{% for category in categories %}
+    {% if category.children %}
+        <li>
+            {% set i = i + 1 %}
+            <a href="#" class="dropdown-button" data-target="{{ i }}">{{ category.name }}</a>
+            {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                <ul id="{{ i }}" class="dropdown-content">
+                    {% for child in children %}
+                        <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                    {% endfor %}
+                    <li class="divider"></li>
+                    
+                </ul>
 
-<ul class="nav-menu" class="" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-	{% for category in categories %}
-	<li><a class="waves-effect" href="{{ category.href }}" itemprop="url"><span itemprop="name">{{ category.name }}</span></a></li>
-	<li class="divider"></li>
-	{% endfor %}
-</ul>
-{% endif %}
+            {% endfor %}
+        </li>
+    {% else %}
+        <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+    {% endif %}
+{% endfor %}
+{% endif %} 

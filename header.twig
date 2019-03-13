@@ -117,7 +117,7 @@
 		<div class="row top-container {{ color_header }}">
 			<div class="container">
 				<div class="valign-wrapper">
-					<div class="col s4 left">
+					<div class="col s3 left">
 						{% if logo %}
 						<a href="{{ home }}">
 							<img id="logo-img" class="responsive-img lazyload" src="{{ img_loader }}" data-src="{{ logo }}" title="{{ name }}" alt="{{ name }}">
@@ -126,21 +126,21 @@
 						<strong><a href="{{ home }}" class="{{ color_header_text }}">{{ name }}</a></strong>
 						{% endif %}
 					</div>
-
-			
-				
-					<ul class="col s8">
-						<li>{{ menu }}</li>
-					</ul>
 					
-	
+						<nav id="header-navigation" class="{{ color_navigation }}">
+							<div class="nav-wrapper container" class="col s12">
+								
+									<ul>
+										{{ menu }}
+									</ul>
+							</div>
+						</nav>
+					
+					
 				</div>
-				<ul class="col m12">
-						
-							<li>
-							{{ search }}
-							</li>
-						</ul>
+		
+			<div class="row right col s9">
+					{{ search }}
 			</div>
 		</div>
 
